@@ -1,0 +1,14 @@
+[Unit]
+Description=V2Ray RDP INet Service
+
+[Service]
+Type=simple
+User=root
+Group=root
+StartLimitBurst=0
+StartLimitBurst=0
+ExecStart=/usr/lib/v2ray/v2ray -config /etc/v2ray-rdpinet/config.json
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
