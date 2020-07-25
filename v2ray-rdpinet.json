@@ -1,0 +1,79 @@
+{
+    "log": {
+        "loglevel": "none"
+    },
+    "inbounds": [
+    	{
+            "listen": "0.0.0.0",
+            "port": 9861,
+            "protocol": "http",
+            "settings": {
+                "userLevel": 0
+            },
+            "tag": "http-inbound"
+        },
+        {
+            "listen": "0.0.0.0",
+            "port": 9061,
+            "protocol": "socks",
+            "settings": {
+                "auth": "noauth",
+                "ip": "127.0.0.1",
+                "udp": true,
+                "userLevel": 0
+            },
+            "sniffing": {
+                "destOverride": [
+                    "http",
+                    "tls"
+                ],
+                "enabled": true
+            },
+            "tag": "socks-inbound"
+        }
+    ],
+    "outbounds": [
+        {
+        	"sendThrough": "0.0.0.0",
+        	"mux": {
+        		"enabled": false,
+        		"concurrency": 1
+        	},
+            "protocol": "vmess",
+            "settings": {
+                "vnext": [
+                    {
+                        "address": "--------",
+                        "port": 443,
+                        "users": [
+                            {
+                                "alterId": 64,
+                                "id": "280c56cc-1746-4ea6-9448-60845c2d7da5",
+                                "level": 0,
+                                "security": "auto"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "streamSettings": {
+                "network": "ws",
+                "security": "tls",
+                "tlsSettings": {
+                    "alpn": [
+                    ],
+                    "serverName": "1.rdpjp.forestresearch.ml"
+                },
+                "wsSettings": {
+                    "headers": {
+                        "Host": "1.rdpjp.forestresearch.ml"
+                    },
+                    "path": "/one"
+                }
+            }
+        }
+    ],
+    "routing": {
+        "domainStrategy": "AsIs"
+    }
+}
