@@ -43,12 +43,12 @@
             "settings": {
                 "vnext": [
                     {
-                        "address": "--------",
+                        "address": "207.148.92.89",
                         "port": 443,
                         "users": [
                             {
                                 "alterId": 64,
-                                "id": "280c56cc-1746-4ea6-9448-60845c2d7da5",
+                                "id": "280c56dd-1746-4ea6-9448-60845c2d7da5",
                                 "level": 0,
                                 "security": "auto"
                             }
@@ -60,6 +60,8 @@
                 "network": "ws",
                 "security": "tls",
                 "tlsSettings": {
+                	"allowInsecureCiphers": true,
+                	"allowInsecure": true,
                     "alpn": [
                     ],
                     "serverName": "1.rdpjp.forestresearch.ml"
